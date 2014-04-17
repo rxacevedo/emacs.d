@@ -42,18 +42,37 @@
 
 ;; Clojure
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
-(setq nrepl-history-file "~/.emacs.d/nrepl-history")
-(setq nrepl-popup-stacktraces t)
-(setq nrepl-popup-stacktraces-in-repl t)
-(add-hook 'nrepl-connected-hook
-          (defun pnh-clojure-mode-eldoc-hook ()
-            (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
-            (add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-            (nrepl-enable-on-existing-clojure-buffers)))
-(add-hook 'nrepl-mode-hook 'subword-mode)
+(setq cider-repl-history-file "~/.emacs.d/nrepl-history")
+(setq cider-popup-stacktraces t)
+(setq cider-popup-stacktraces-in-repl t)
+
+(add-hook 'cider-repl-mode-hook 'subword-mode)
+(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
+(add-hook 'cider-mode-hook 'ac-nrepl-setup)
+
+;; Suppress line endings (^M) in windows
+(when (eq 'windows-nt system-type)
+  (defun remove-dos-eol ()
+    "Do not show ^M in files containing mixed UNIX and DOS line endings."
+    (interactive)
+    (setq buffer-display-table (make-display-table))
+    (aset buffer-display-table ?\^M []))
+  (add-hook 'cider-repl-mode-hook 'remove-dos-eol))
+
 (eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'nrepl-mode))
-(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+  '(add-to-list 'ac-modes 'cider-repl-mode))
+
+;; Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+
+;; hslint on the command line only likes this indentation mode;
+;; alternatives commented out below.
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+
+;; Ignore compiled Haskell files in filename completions
+(add-to-list 'completion-ignored-extensions ".hi")
 
 ;; hippie expand - don't try to complete with file names
 (setq hippie-expand-try-functions-list (delete 'try-complete-file-name hippie-expand-try-functions-list))
@@ -63,3 +82,32 @@
 
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
+
+;; Use Cygwin stuff (this doesn't work that well so I'm leaving it
+;; commented for now
+;; (add-to-list 'exec-path "C:/cygwin/bin")
+
+;; Sets your shell to use cygwin's bash, if Emacs finds it's running
+;; under Windows and c:\cygwin exists. Assumes that C:\cygwin\bin is
+;; not already in your Windows Path (it generally should not be).
+
+;; (let* ((cygwin-root "c:/cygwin")
+;;        (cygwin-bin (concat cygwin-root "/bin")))
+;;   (when (and (eq 'windows-nt system-type)
+;;   	     (file-readable-p cygwin-root))
+    
+;;     (setq exec-path (cons cygwin-bin exec-path))
+;;     (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
+    
+;;     ;; By default use the Windows HOME.
+;;     ;; Otherwise, uncomment below to set a HOME
+;;     ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
+    
+;;     ;; NT-emacs assumes a Windows shell. Change to bash.
+;;     (setq shell-file-name "bash")
+;;     (setenv "SHELL" shell-file-name) 
+;;     (setq explicit-shell-file-name shell-file-name)
+    
+;;     ;; This removes unsightly ^M characters that would otherwise
+;;     ;; appear in the output of java applications.
+;;     (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))

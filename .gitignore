@@ -3,3 +3,6 @@
 elpa
 .smex-items
 places
+nrepl-history
+url
+var
