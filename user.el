@@ -37,6 +37,14 @@
 ;; (set-face-attribute 'default nil :height 140)
 (load-theme 'tomorrow-night-bright t)
 
+;; Org-mode
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(setq org-agenda-files (list "~/org/work.org"
+                             "~/org/education.org"
+                             "~/org/home.org"))
+
 ;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
 
