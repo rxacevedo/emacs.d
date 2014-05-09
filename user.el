@@ -61,9 +61,35 @@
 (setq cider-popup-stacktraces t)
 (setq cider-popup-stacktraces-in-repl t)
 
+;; CamelCase
 (add-hook 'cider-repl-mode-hook 'subword-mode)
+
+;; ac-nrepl - completion source for `auto-complete`
 (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
 (add-hook 'cider-mode-hook 'ac-nrepl-setup)
+(eval-after-load "auto-complete"
+    '(add-to-list 'ac-modes 'cider-repl-mode))
+
+;; Enable minibuffer docs in cider-mode
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+
+;; Hide the *nrepl-connection* and *nrepls-server* buffers
+(setq nrepl-hide-special-buffers t)
+
+;; Don't show the error popups when not in the REPL
+(setq cider-popup-stacktraces nil)
+
+;; Show error popups when in the REPL
+(setq cider-repl-popup-stacktraces t)
+
+;; And switch to it automatically
+(setq cider-auto-select-error-buffer t)
+
+;; Shoe me dat port
+(setq nrepl-buffer-name-show-port t)
+
+;; Make the REPL output commented
+(setq cider-repl-result-prefix ";; => ")
 
 ;; Suppress line endings (^M) in windows
 (when (eq 'windows-nt system-type)
@@ -73,9 +99,6 @@
     (setq buffer-display-table (make-display-table))
     (aset buffer-display-table ?\^M []))
   (add-hook 'cider-repl-mode-hook 'remove-dos-eol))
-
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'cider-repl-mode))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
