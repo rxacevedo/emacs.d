@@ -55,6 +55,9 @@
 ;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
 
+;; Projectile
+(projectile-global-mode)
+
 ;; Clojure
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (setq cider-repl-history-file "~/.emacs.d/nrepl-history")
@@ -68,7 +71,7 @@
 (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
 (add-hook 'cider-mode-hook 'ac-nrepl-setup)
 (eval-after-load "auto-complete"
-    '(add-to-list 'ac-modes 'cider-repl-mode))
+    '(add-to-list 'ac-modes 'cider-repl-mode 'cider-mode))
 
 ;; Enable minibuffer docs in cider-mode
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
