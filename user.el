@@ -35,7 +35,8 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 ;; Uncomment this to increase font size
 ;; (set-face-attribute 'default nil :height 140)
-(load-theme 'tomorrow-night-bright t)
+;; (load-theme 'tomorrow-night-bright t)
+(load-theme 'leuven t)
 
 ;; Org-mode
 
@@ -50,7 +51,8 @@
 (setq org-log-done t)
 (setq org-agenda-files (list "~/org/work.org"
                              "~/org/education.org"
-                             "~/org/home.org"))
+                             "~/org/home.org"
+                             "~/org/reading.org"))
 
 ;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)

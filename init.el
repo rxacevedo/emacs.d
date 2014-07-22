@@ -24,10 +24,10 @@
                       auto-complete
                       cider
                       clojure-mode
-                      clojure-test-mode
                       gist
                       hackernews
                       haskell-mode
+                      leuven-theme
                       magit
                       markdown-mode
                       org
@@ -38,6 +38,9 @@
                       starter-kit-bindings
                       starter-kit-ruby)
   "A list of packages to ensure are installed at launch.")
+
+(set-face-attribute 'default nil :font "Source Code Pro-14" )
+(set-frame-font "Source Code Pro-14"  nil t)
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
