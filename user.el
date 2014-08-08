@@ -32,6 +32,12 @@
 ;; (load-theme 'tomorrow-night-bright t)
 (load-theme 'leuven t)
 
+;; fontify the whole line for headings (with a background color)
+(setq org-fontify-whole-heading-line t)
+
+;; Make top-level headings normal size
+(set-face-attribute 'org-level-1 nil :height 150)
+
 ;; Org-mode
 
 ;; Set to the location of your Org files on your local system
