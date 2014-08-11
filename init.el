@@ -2,15 +2,16 @@
 
 ;; Fix path for Emacs gui
 ;; Don't need to set path for the Windows GUI client
-(when (not (and window-system (eq 'windows-nt system-type)))
+(when (and window-system (eq 'darwin system-type))
   (defun set-exec-path-from-shell-PATH ()
     (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
       (setenv "PATH" path-from-shell)
       (setq exec-path (split-string path-from-shell path-separator))))
   (set-exec-path-from-shell-PATH))
 
-(set-face-attribute 'default nil :font "Source Code Pro-14" )
-(set-frame-font "Source Code Pro Medium-11"  nil t)
+(set-face-attribute 'default nil :font (if (eq system-type 'darwin)
+                                           "Source Code Pro-14"
+                                         "Source-Code Pro Medium-11"))
 
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
