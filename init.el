@@ -11,7 +11,7 @@
 
 (set-face-attribute 'default nil :font (if (eq system-type 'darwin)
                                            "Source Code Pro-14"
-                                         "Source-Code Pro Medium-11"))
+                                         "Source Code Pro Medium-11"))
 
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
