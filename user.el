@@ -75,8 +75,7 @@
                                      "/home.org"
                                      "/reading.org"
                                      "/print_manager.org"
-                                     "/inbox.org"
-                                     "/flagged.org")))
+                                     "/inbox.org")))
 
 ;; Log timestamp when completing todos
 (setq org-log-done t)
@@ -85,8 +84,17 @@
 ;;          Org-capture           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq org-default-notes-file (concat org-directory "/flagged.org"))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cc" 'org-capture)
+
+;; Capture templates
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")
+        ;; TODO: Fix this
+        ("n" "Note" entry (file ""))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                         Org-mode END                           ;;
