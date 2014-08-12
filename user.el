@@ -50,7 +50,8 @@
                              "~/org/education.org"
                              "~/org/home.org"
                              "~/org/reading.org"
-                             "~/org/print_manager.org"))
+                             "~/org/print_manager.org"
+                             "~/org/inbox.org"))
 
 ;; Make top-level headings normal size
 ;; (set-face-attribute 'org-level-1 nil :height 150)
