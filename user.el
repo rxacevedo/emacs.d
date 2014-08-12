@@ -68,7 +68,8 @@
 (define-key global-map "\C-ca" 'org-agenda)
 
 ;; Track these files
-(setq org-agenda-files (mapcar (lambda (f) (concat org-directory f))
+(setq org-agenda-files (mapcar (lambda (f)
+                                 (concat org-directory f))
                                (list "/work.org"
                                      "/education.org"
                                      "/home.org"
