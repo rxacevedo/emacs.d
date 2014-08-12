@@ -9,10 +9,6 @@
       (setq exec-path (split-string path-from-shell path-separator))))
   (set-exec-path-from-shell-PATH))
 
-(set-face-attribute 'default nil :font (if (eq system-type 'darwin)
-                                           "Source Code Pro-14"
-                                         "Source Code Pro Medium-11"))
-
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
@@ -46,8 +42,5 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-
-;; Always show line numbers
-(global-linum-mode t)
 
 (load "~/.emacs.d/user.el")
