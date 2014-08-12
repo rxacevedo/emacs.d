@@ -29,7 +29,6 @@
 
 ;; Uncomment this to increase font size
 ;; (set-face-attribute 'default nil :height 140)
-;; (load-theme 'tomorrow-night-bright t)
 (load-theme 'leuven t)
 
 ;; fontify the whole line for headings (with a background color)
@@ -51,7 +50,8 @@
                              "~/org/home.org"
                              "~/org/reading.org"
                              "~/org/print_manager.org"
-                             "~/org/inbox.org"))
+                             "~/org/inbox.org"
+                             "~/org/flagged.org"))
 
 ;; Make top-level headings normal size
 ;; (set-face-attribute 'org-level-1 nil :height 150)
@@ -127,32 +127,3 @@
 
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
-
-;; Use Cygwin stuff (this doesn't work that well so I'm leaving it
-;; commented for now
-;; (add-to-list 'exec-path "C:/cygwin/bin")
-
-;; Sets your shell to use cygwin's bash, if Emacs finds it's running
-;; under Windows and c:\cygwin exists. Assumes that C:\cygwin\bin is
-;; not already in your Windows Path (it generally should not be).
-
-;; (let* ((cygwin-root "c:/cygwin")
-;;        (cygwin-bin (concat cygwin-root "/bin")))
-;;   (when (and (eq 'windows-nt system-type)
-;;   	     (file-readable-p cygwin-root))
-    
-;;     (setq exec-path (cons cygwin-bin exec-path))
-;;     (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
-    
-;;     ;; By default use the Windows HOME.
-;;     ;; Otherwise, uncomment below to set a HOME
-;;     ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
-    
-;;     ;; NT-emacs assumes a Windows shell. Change to bash.
-;;     (setq shell-file-name "bash")
-;;     (setenv "SHELL" shell-file-name) 
-;;     (setq explicit-shell-file-name shell-file-name)
-    
-;;     ;; This removes unsightly ^M characters that would otherwise
-;;     ;; appear in the output of java applications.
-;;     (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
