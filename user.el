@@ -49,10 +49,11 @@
 (setq org-agenda-files (list "~/org/work.org"
                              "~/org/education.org"
                              "~/org/home.org"
-                             "~/org/reading.org"))
+                             "~/org/reading.org"
+                             "~/org/print_manager.org"))
 
 ;; Make top-level headings normal size
-(set-face-attribute 'org-level-1 nil :height 150)
+;; (set-face-attribute 'org-level-1 nil :height 150)
 
 ;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
