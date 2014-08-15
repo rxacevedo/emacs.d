@@ -75,7 +75,8 @@
                                      "/home.org"
                                      "/reading.org"
                                      "/print_manager.org"
-                                     "/inbox.org")))
+                                     "/inbox.org"
+                                     "/flagged.org")))
 
 ;; Log timestamp when completing todos
 (setq org-log-done t)
