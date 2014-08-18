@@ -70,13 +70,15 @@
 ;; Track these files
 (setq org-agenda-files (mapcar (lambda (f)
                                  (concat org-directory f))
-                               (list "/work.org"
+                               (list "/home.org"
+                                     "/work.org"
                                      "/education.org"
-                                     "/home.org"
                                      "/reading.org"
                                      "/print_manager.org"
+                                     "/flagged.org"
                                      "/inbox.org"
-                                     "/flagged.org")))
+                                     "/notes.org"
+                                     "/journal.org")))
 
 ;; Log timestamp when completing todos
 (setq org-log-done t)
