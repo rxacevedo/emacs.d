@@ -49,6 +49,13 @@
 ;; Org files go here
 (setq org-directory "~/org")
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . T)
+   (java . t)
+   (haskell . t)
+   (plantuml . t)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           MobileOrg            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
