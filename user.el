@@ -13,6 +13,8 @@
 ;; a .yml file
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
+(require 'ox-jekyll)
+(require 'org-octopress)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -48,6 +50,11 @@
 
 ;; Org files go here
 (setq org-directory "~/org")
+
+;; PlantUML - Get it if we got it
+(let ((plantuml-jar-path "/usr/local/Cellar/plantuml/8002/plantuml.8002.jar"))
+  (if (file-exists-p plantuml-jar-path)
+      (setq org-plantuml-jar-path plantuml-jar-path)))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
