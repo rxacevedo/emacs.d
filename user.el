@@ -84,17 +84,30 @@
 (define-key global-map "\C-ca" 'org-agenda)
 
 ;; Track these files
-(setq org-agenda-files (mapcar (lambda (f)
-                                 (concat org-directory f))
-                               (list "/home.org"
-                                     "/work.org"
-                                     "/education.org"
-                                     "/reading.org"
-                                     "/print_manager.org"
-                                     "/flagged.org"
-                                     "/inbox.org"
-                                     "/notes.org"
-                                     "/journal.org")))
+(setq org-agenda-files
+      (mapcar (lambda (f)
+                (concat org-directory f))
+              (list "/home.org"
+                    "/work.org"
+                    "/education.org"
+                    "/reading.org"
+                    "/print_manager.org"
+                    "/flagged.org"
+                    "/inbox.org"
+                    "/notes.org"
+                    "/journal.org")))
+
+;; Refile to these
+;; (setq org-refile-targets
+;;       (mapcar (lambda (f)
+;;                 `(,f . ((:level . 1))))
+;;               org-agenda-files))
+
+; Targets include this file and any file contributing to the agenda - up to 9 levels deep
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+
+(setq org-refile-use-outline-path `file)
 
 ;; Log timestamp when completing todos
 (setq org-log-done t)
