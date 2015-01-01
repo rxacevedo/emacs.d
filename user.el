@@ -41,10 +41,11 @@
 
 ;; Theme
 (load-theme 'leuven t)
+;; (load-theme 'tomorrow-night-bright t)
 
 ;; Fontify the whole line for headings (with a background color)
 ;; (Specific to leuven theme)
-(setq org-fontify-whole-heading-line t)
+;; (setq org-fontify-whole-heading-line t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                        Org-mode START                          ;;
