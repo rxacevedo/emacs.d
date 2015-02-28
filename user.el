@@ -12,12 +12,6 @@
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 
-(when (not (eq 'windows-nt system-type))
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/vendor")
-    (require 'ox-jekyll)
-    (require 'org-octopress)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Always show line numbers
