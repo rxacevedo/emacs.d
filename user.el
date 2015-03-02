@@ -18,9 +18,9 @@
 (global-linum-mode t)
 
 ;; Gotta have my font
-(set-face-attribute 'default nil :font (if (eq system-type 'darwin)
-                                           "Source Code Pro-14"
-                                         "Source Code Pro Medium-11"))
+;; (set-face-attribute 'default nil :font (if (eq system-type 'darwin)
+;;                                            "Source Code Pro-14"
+;;                                          "Source Code Pro Medium-11"))
 
 ;; Shell scripts
 (setq-default sh-basic-offset 2)
